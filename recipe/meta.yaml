@@ -8,8 +8,9 @@ package:
 source:
   url: http://downloads.xiph.org/releases/{{ name }}/lib{{ name }}-{{ version }}.tar.gz
   sha256: 0eb4b4b9420a0f51db142ba3f9c64b333f826532dc0f48c6410ae51f4799b664
-  patches:
-    - c8fca6b4a02d695b1ceea39b330d4406001c03ed.patch
+  # 6/7/2021: in v1.3.5 unsigned typedefs for MacOS was fixed https://github.com/xiph/ogg/commit/c8fca6b4a02d695b1ceea39b330d4406001c03ed
+  #patches:
+    #- c8fca6b4a02d695b1ceea39b330d4406001c03ed.patch
 
 build:
   number: 1
@@ -23,6 +24,8 @@ requirements:
     - cmake      # [win]
     - make       # [unix]
     - pkgconfig  # [unix]
+    - patch      # [unix]
+    - m2-patch   # [win]
 
 test:
   commands:
@@ -40,12 +43,14 @@ test:
 about:
   home: https://www.xiph.org/
   license: BSD-3-Clause
+  license_family: BSD
   license_file: COPYING
   summary: OGG media container
   description: |
     OGG media container. This is the native format and the recommended container
     for Xiph codecs.
   doc_url: https://wiki.xiph.org/
+  dev_url: https://github.com/xiph/ogg
 
 extra:
   recipe-maintainers:
