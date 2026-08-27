@@ -19,7 +19,7 @@ requirements:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
-    - cmake >3.5 # [win]
+    - cmake      # [win]
     - make       # [unix]
     - pkgconfig  # [unix]
 
